@@ -8,11 +8,24 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody characterRB;
     Vector3 movementInput;
     Vector3 movementVector;
-    [SerializeField ]float movementSpeed = 5;
+    [SerializeField] float movementSpeed = 200;
+    [SerializeField] float movementWalkSpeed = 200;
+    [SerializeField] float movementSprintSpeed = 300;
+    [SerializeField] float movementCrouchingSpeed = 100;
+
+    [SerializeField] bool isSprinting;
+    [SerializeField] bool isCrouching;
 
     private void Start()
     {
         characterRB = GetComponent<Rigidbody>();
+    }
+
+    private void Update()
+    {
+        ChangeMovementSpeed();
+
+        SetMovementStyle();
     }
 
     void FixedUpdate()
@@ -38,6 +51,41 @@ public class PlayerMovement : MonoBehaviour
             movementVector.y = 0; // Ignore vertical component
         }
         characterRB.velocity = (movementVector * Time.fixedDeltaTime * movementSpeed);
+    }
+
+    void SetMovementStyle()
+    {
+
+        if (Keyboard.current.leftShiftKey.isPressed)
+        {
+            isSprinting = true;
+        }
+        else if (Keyboard.current.leftCtrlKey.isPressed) 
+        {
+            isCrouching = true;
+        }
+        else
+        {
+            isSprinting = false;
+            isCrouching = false;
+        }
+
+    }
+
+    void ChangeMovementSpeed()
+    {
+        if (isSprinting)
+        {
+            movementSpeed = movementSprintSpeed;
+        }
+        else if (isCrouching)
+        {
+            movementSpeed = movementCrouchingSpeed;
+        }
+        else
+        {
+            movementSpeed = movementWalkSpeed;
+        }
     }
 }
 
