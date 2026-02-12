@@ -5,6 +5,7 @@ using UnityEngine;
 public class SoundBank : MonoBehaviour
 {
     public AudioClip stepAudio;
+    public AudioClip idleAudio;
     public static SoundBank Instance { get; private set; }
 
     private void Awake()
