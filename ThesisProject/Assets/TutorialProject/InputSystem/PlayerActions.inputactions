@@ -35,7 +35,7 @@
                 {
                     "name": "Interact",
                     "type": "Button",
-                    "id": "130160dd-4d97-46f9-852c-0e908e26645e",
+                    "id": "0960263d-40e5-44eb-b8b6-0ff8237e55fc",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -166,7 +166,7 @@
                 },
                 {
                     "name": "",
-                    "id": "1c890ed9-e8ff-4af8-89f0-8b73335b91f6",
+                    "id": "b91731c3-450e-4ebb-8619-81bdefb582bb",
                     "path": "<Keyboard>/#(E)",
                     "interactions": "",
                     "processors": "",
@@ -189,6 +189,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "876b7889-a786-453f-b069-c8bb0344dfb2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -200,6 +209,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "PauseGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a981ecbf-f3cb-4542-aa0c-378e04a48b58",
+                    "path": "<Keyboard>/#(E)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

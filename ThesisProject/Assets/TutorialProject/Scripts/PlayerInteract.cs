@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public interface IInteractable
 {
     void Interact();
 }
-
 public class PlayerInteract : MonoBehaviour
 {
     [SerializeField] Camera playerCamera;
@@ -16,7 +13,6 @@ public class PlayerInteract : MonoBehaviour
     {
         playerCamera = Camera.main;
     }
-
     private void OnInteract(InputValue value)
     {
         Ray ray = new Ray
@@ -24,20 +20,17 @@ public class PlayerInteract : MonoBehaviour
             origin = playerCamera.transform.position,
             direction = playerCamera.transform.forward
         };
-        
         Debug.DrawRay(ray.origin, ray.direction* interactRange);
 
         RaycastHit rayHitInfo;
 
         if (Physics.Raycast(ray, out rayHitInfo, interactRange))
         {
-            F_IInteractable interactable = rayHitInfo.collider.GetComponent<F_IInteractable>();
+            IInteractable interactable = rayHitInfo.collider.GetComponent<IInteractable>();
             if (interactable != null)
             {
                 interactable.Interact();
             }
         }
-        
-
     }
 }
