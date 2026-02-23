@@ -8,6 +8,8 @@ using UnityEngine.InputSystem;
 
 public class DialogueManager : MonoBehaviour
 {
+
+    [SerializeField] private NPC currentNPC;
     public static DialogueManager Instance { get; private set; }
 
     private bool inDialogue;
@@ -40,12 +42,12 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void QueueDialogue(SO_Dialogue dialogue)
+    public void QueueDialogue(SO_Dialogue dialogue,NPC npc)
     {
         if (inDialogue)
-        {
             return;
-        }
+        
+        currentNPC = npc;
 
         GameObject.FindWithTag("Player").GetComponent<PlayerInput>().enabled = false;
 
@@ -89,6 +91,9 @@ public class DialogueManager : MonoBehaviour
         inDialogue = false;
 
         GameObject.FindWithTag("Player").GetComponent<PlayerInput>().enabled = true;
+
+        currentNPC?.OnDialogueFinished();
+        currentNPC = null;
     }
 
     private IEnumerator TypeText(SO_Dialogue.Info info)

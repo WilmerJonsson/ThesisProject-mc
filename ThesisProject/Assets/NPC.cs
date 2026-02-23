@@ -9,7 +9,7 @@ public class NPC : MonoBehaviour, IInteractable
     {
         if (dialogues.Count == 0) return;
 
-        DialogueManager.Instance.QueueDialogue(dialogues[currentDialogueIndex]);
+        DialogueManager.Instance.QueueDialogue(dialogues[currentDialogueIndex], this);
     }
 
     public void OnDialogueFinished()

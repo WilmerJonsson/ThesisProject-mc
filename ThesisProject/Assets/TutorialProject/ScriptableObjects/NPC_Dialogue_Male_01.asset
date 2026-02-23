@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49f69951e110ff54c8c23a90ed1f11e2, type: 3}
-  m_Name: NPC_Dialogue_Female_03
+  m_Name: NPC_Dialogue_Male_01
   m_EditorClassIdentifier: 
   dialogueInfo:
   - dialogue: "ey pappskalle dra h\xE4r ifr\xE5n"
