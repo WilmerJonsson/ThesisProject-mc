@@ -16,9 +16,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] bool isSprinting;
     [SerializeField] bool isCrouching;
 
+    [SerializeField] GameObject playerWalkingParticles;
+
     private void Start()
     {
         characterRB = GetComponent<Rigidbody>();
+
+        playerWalkingParticles.SetActive(false);
     }
 
     private void Update()
@@ -28,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
         SetMovementStyle();
     }
 
-    void FixedUpdate()
+    void FixedUpdate()  
     {
         ApplyMovement();
     }
@@ -36,11 +40,15 @@ public class PlayerMovement : MonoBehaviour
     void OnMovement(InputValue input)
     {
         movementInput = new Vector3(input.Get<Vector2>().x, 0, input.Get<Vector2>().y);
+        playerWalkingParticles.SetActive(true);
+
     }
 
     void OnMovementStop(InputValue input)
     {
         movementVector = Vector3.zero;
+
+        playerWalkingParticles.SetActive(false);
     }
 
     void ApplyMovement()
